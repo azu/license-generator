@@ -8,7 +8,12 @@ repository = "https://github.com/azu/license-generator"
 version = "0.1.0"
 authors = ["azu <azuciao@gmail.com>"]
 edition = "2018"
-include = ["src/**/*", "Cargo.toml"]
+include = [
+    "src/**/*",
+    "Cargo.toml",
+    "README.md",
+    "LICENSE"
+]
 [dependencies]
 license = "0.7.2"
 structopt = "0.2.14"
