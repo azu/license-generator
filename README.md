@@ -10,7 +10,7 @@ Install with [Cargo](https://crates.io/):
 
 ## Usage
 
-    license-generator --author <name> [LICENSE_TYPE]
+    $ license-generator --author <name> [LICENSE_TYPE]
 
     [LICENSE_TYPE]:
     - AGPL
@@ -21,6 +21,9 @@ Install with [Cargo](https://crates.io/):
     - MIT
     - MPL
     - Unlicense
+
+    Options:
+      --author input author name
 
 ## Support Licenses
 
@@ -51,4 +54,4 @@ The CLI use [license - Cargo: packages for Rust](https://crates.io/crates/licens
 
 ## License
 
-MIT
+MIT © azu
