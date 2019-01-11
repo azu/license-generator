@@ -37,8 +37,8 @@ pub fn create_license<'a>(license_type: &'a str, author: &'a str, year: i32) -> 
         "mpl" => Some(Box::new(license::Mpl2)),
         "MPL" => Some(Box::new(license::Mpl2)),
         // Unlicense
-        "unlinse" => Some(Box::new(license::Unlicense)),
-        "Unlinse" => Some(Box::new(license::Unlicense)),
+        "unlicense" => Some(Box::new(license::Unlicense)),
+        "Unlicense" => Some(Box::new(license::Unlicense)),
         "UNLICENSE" => Some(Box::new(license::Unlicense)),
         _ => None
     }
