@@ -2,6 +2,9 @@
 name = "license-generator"
 description = "A Command line tool that generate `LICENSE` file."
 keywords = ["license","generator", "cli"]
+readme = "README.md"
+license-file = "LICENSE"
+repository = "https://github.com/azu/license-generator"
 version = "0.1.0"
 authors = ["azu <azuciao@gmail.com>"]
 edition = "2018"
