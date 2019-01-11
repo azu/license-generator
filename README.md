@@ -40,7 +40,7 @@ The CLI use [license - Cargo: packages for Rust](https://crates.io/crates/licens
 ## Tests
 
     cargo test
-    
+
 ## Contributing
 
 1. Fork it!

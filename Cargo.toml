@@ -1,5 +1,7 @@
 [package]
 name = "license-generator"
+description = "A Command line tool that generate `LICENSE` file."
+keywords = ["license","generator", "cli"]
 version = "0.1.0"
 authors = ["azu <azuciao@gmail.com>"]
 edition = "2018"
