@@ -17,6 +17,11 @@ pub fn create_license<'a>(license_type: &'a str, author: &'a str, year: i32) -> 
         // MIT
         "mit" => Some(Box::new(license::Mit::new(year, &author))),
         "MIT" => Some(Box::new(license::Mit::new(year, &author))),
+        // GPL
+        "gpl" => Some(Box::new(license::Gpl3)),
+        "GPL" => Some(Box::new(license::Gpl3)),
+        "gpl-3" => Some(Box::new(license::Gpl3)),
+        "GPL-3" => Some(Box::new(license::Gpl3)),
         // APGL
         "apgl" => Some(Box::new(license::Agpl3)),
         "APGL" => Some(Box::new(license::Agpl3)),
@@ -58,10 +63,20 @@ mod test {
 
     #[test]
     fn create_mit_license() {
+        // MIT require author
         let license = create_license("MIT", "azu", 2018);
         let l = license.unwrap();
         assert_eq!(l.name(), Mit::new(2018, "azu").name());
         assert_eq!(l.id(), Mit::new(2018, "azu").id());
+    }
+
+    #[test]
+    fn create_gpl3_license() {
+        // TODO: we want to interate other licenses
+        let license = create_license("gpl", "azu", 2018);
+        let l = license.unwrap();
+        assert_eq!(l.name(), Gpl3.name());
+        assert_eq!(l.id(), Gpl3.id());
     }
 
     #[test]
