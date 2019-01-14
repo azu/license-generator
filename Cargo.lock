@@ -99,7 +99,7 @@ dependencies = [
 
 [[package]]
 name = "license-generator"
-version = "0.1.5-alpha.0"
+version = "0.2.0"
 dependencies = [
  "chrono 0.4.6 (registry+https://github.com/rust-lang/crates.io-index)",
  "license 0.7.2 (registry+https://github.com/rust-lang/crates.io-index)",
