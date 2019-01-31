@@ -37,12 +37,12 @@ fn main() -> Result<(), Box<std::error::Error>> {
     // TODO: want to remove clone
     let project = opt.project.clone().unwrap_or_else(|| {
         env::current_dir()
-            .expect("--project: Not found current dir")
+            .expect("use --project: Not found current dir")
             .file_name()
-            .expect("--project: Not found directory name")
+            .expect("use --project: Not found directory name")
             .to_os_string()
             .into_string()
-            .expect("--project: Fail to wnwrap os_string")
+            .expect("use --project: Fail to unwrap os_string")
     });
 
     let license_text = license.notice(
