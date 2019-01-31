@@ -18,6 +18,7 @@ Install with [Cargo](https://crates.io/):
     - CC-BY
     - CC-BY-NC
     - CC-BY-NC-SA
+    - CC-BY-SA
     - CC0
     - GPL
     - LGPL
@@ -35,14 +36,16 @@ The CLI supports the following licenses:
 
 - [AGPL-3.0](http://www.gnu.org/licenses/agpl-3.0)
 - [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
+- [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+- [CC-BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+- [CC-BY-NC-SA-4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 - [CC0-1.0](http://creativecommons.org/publicdomain/zero/1.0/)
 - [GPL-3.0](http://www.gnu.org/licenses/gpl-3.0)
 - [LGPL-3.0](http://www.gnu.org/licenses/lgpl-3.0)
 - [MIT](https://opensource.org/licenses/MIT)
 - [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)
 - [Unlicense](http://unlicense.org/)
-
-The CLI use [license - Cargo: packages for Rust](https://crates.io/crates/license).
 
 ## Tests
 
