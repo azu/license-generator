@@ -48,6 +48,10 @@ The CLI use [license - Cargo: packages for Rust](https://crates.io/crates/licens
 
     cargo test
 
+## Release
+
+    cargo release --no-dev-version {patch,minor,major}
+
 ## Contributing
 
 1. Fork it!
