@@ -115,6 +115,6 @@ pub struct UNLICENSE {}
 
 impl License for UNLICENSE {
     fn notice(&self, _year: i32, _name: &str, _project: &str) -> String {
-        format!(include_str!("../files/unlicense.txt"))
+        include_str!("../files/unlicense.txt").to_string()
     }
 }

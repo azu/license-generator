@@ -6,7 +6,7 @@ pub mod license;
 
 pub fn write_license(license_text: &str, output_path: &str) -> Result<(), io::Error> {
     let mut file = File::create(output_path)?;
-    file.write(license_text.as_bytes())?;
+    file.write_all(license_text.as_bytes())?;
     Ok(())
 }
 

@@ -7,6 +7,7 @@ use structopt::StructOpt;
 use license_generator::create_license;
 use license_generator::write_license;
 use std::process;
+use std::env;
 
 #[derive(StructOpt, Debug)]
 struct Opt {
@@ -34,8 +35,15 @@ fn main() -> Result<(), Box<std::error::Error>> {
     let current_year = dt.year();
     let author = opt.author.as_str();
     // TODO: want to remove clone
-    // TODO: if --project is missing, throw error?
-    let project = opt.project.clone().unwrap_or("The project".to_string());
+    let project = opt.project.clone().unwrap_or_else(|| {
+        env::current_dir()
+            .expect("use --project: Not found current dir")
+            .file_name()
+            .expect("use --project: Not found directory name")
+            .to_os_string()
+            .into_string()
+            .expect("use --project: Fail to unwrap os_string")
+    });
 
     let license_text = license.notice(
         current_year,
