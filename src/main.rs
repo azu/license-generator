@@ -23,11 +23,6 @@ struct Opt {
 
 fn main() -> Result<(), Box<std::error::Error>> {
     let opt = Opt::from_args();
-    let dt = Local::now();
-    let current_year = dt.year();
-    // TODO: want to remove clone
-    // TODO: if --project is missing, throw error?
-    let project = opt.project.clone().unwrap_or("The project".to_string());
     let license = create_license(
         opt.input.as_str()
     );
@@ -35,10 +30,16 @@ fn main() -> Result<(), Box<std::error::Error>> {
         eprintln!("Not found match license: {}", opt.input);
         process::exit(1);
     });
+    let dt = Local::now();
+    let current_year = dt.year();
+    let author = opt.author.as_str();
+    // TODO: want to remove clone
+    // TODO: if --project is missing, throw error?
+    let project = opt.project.clone().unwrap_or("The project".to_string());
 
     let license_text = license.notice(
         current_year,
-        opt.author.as_str(),
+        author,
         &project);
     write_license(&license_text, "LICENSE").unwrap_or_else(|error| {
         eprintln!("Can not write LICENSE file: {}", error);
