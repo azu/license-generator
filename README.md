@@ -15,6 +15,9 @@ Install with [Cargo](https://crates.io/):
     [LICENSE_TYPE]:
     - AGPL
     - Apache
+    - CC-BY
+    - CC-BY-NC
+    - CC-BY-NC-SA
     - CC0
     - GPL
     - LGPL
@@ -24,6 +27,7 @@ Install with [Cargo](https://crates.io/):
 
     Options:
       --author input author name
+      --project input project name that is required by some license
 
 ## Support Licenses
 

@@ -1,89 +1,104 @@
-extern crate license;
-
-use license::License;
 use std::fs::File;
 use std::io::Write;
 use std::io;
 
+pub mod license;
 
-pub fn write_license(license: &Box<License>, output_path: &str) -> Result<(), io::Error> {
+pub fn write_license(license_text: &str, output_path: &str) -> Result<(), io::Error> {
     let mut file = File::create(output_path)?;
-    file.write(license.text().as_bytes())?;
+    file.write(license_text.as_bytes())?;
     Ok(())
 }
 
-pub fn create_license<'a>(license_type: &'a str, author: &'a str, year: i32) -> Option<Box<License>> {
+pub fn create_license(license_type: &str) -> Option<Box<license::License>> {
     match license_type {
+        // BSD
+        "bsd" => Some(Box::new(license::BSD {})),
+        "BSD" => Some(Box::new(license::BSD {})),
         // MIT
-        "mit" => Some(Box::new(license::Mit::new(year, &author))),
-        "MIT" => Some(Box::new(license::Mit::new(year, &author))),
+        "mit" => Some(Box::new(license::Mit {})),
+        "MIT" => Some(Box::new(license::Mit {})),
         // GPL
-        "gpl" => Some(Box::new(license::Gpl3)),
-        "GPL" => Some(Box::new(license::Gpl3)),
-        "gpl-3" => Some(Box::new(license::Gpl3)),
-        "GPL-3" => Some(Box::new(license::Gpl3)),
+        "gpl" => Some(Box::new(license::GPL {})),
+        "GPL" => Some(Box::new(license::GPL {})),
+        "gpl-3" => Some(Box::new(license::GPL {})),
+        "GPL-3" => Some(Box::new(license::GPL {})),
         // APGL
-        "apgl" => Some(Box::new(license::Agpl3)),
-        "APGL" => Some(Box::new(license::Agpl3)),
-        "apgl-3" => Some(Box::new(license::Agpl3)),
-        "APGL-3" => Some(Box::new(license::Agpl3)),
+        "apgl" => Some(Box::new(license::AGPL {})),
+        "APGL" => Some(Box::new(license::AGPL {})),
+        "apgl-3" => Some(Box::new(license::AGPL {})),
+        "APGL-3" => Some(Box::new(license::AGPL {})),
         // Apache
-        "apache" => Some(Box::new(license::Apache2)),
-        "Apache" => Some(Box::new(license::Apache2)),
+        "apache" => Some(Box::new(license::Apache {})),
+        "Apache" => Some(Box::new(license::Apache {})),
+        // CC_BY
+        "CC-BY" => Some(Box::new(license::CcBy {})),
+        "CCBY" => Some(Box::new(license::CcBy {})),
+        "ccby" => Some(Box::new(license::CcBy {})),
+        // CC_BY_NC
+        "CC-BY-NC" => Some(Box::new(license::CcByNc {})),
+        "CCBYNC" => Some(Box::new(license::CcByNc {})),
+        "ccbync" => Some(Box::new(license::CcByNc {})),
+        // CC_BY_SA
+        "CC-BY-SA" => Some(Box::new(license::CcBySa {})),
+        "CCBYSA" => Some(Box::new(license::CcBySa {})),
+        "ccbysa" => Some(Box::new(license::CcBySa {})),
+        // CC_BY_NC_SA
+        "CC-BY-NC-SA" => Some(Box::new(license::CcByNcSa {})),
+        "CCBYNCSA" => Some(Box::new(license::CcByNcSa {})),
+        "ccbyncsa" => Some(Box::new(license::CcByNcSa {})),
         // CC0
-        "cc0" => Some(Box::new(license::Cc01)),
-        "CC0" => Some(Box::new(license::Cc01)),
+        "cc0" => Some(Box::new(license::CCZero {})),
+        "CC0" => Some(Box::new(license::CCZero {})),
         // LGPL
-        "lgpl" => Some(Box::new(license::Lgpl3)),
-        "LGPL" => Some(Box::new(license::Lgpl3)),
-        "lgpl-3" => Some(Box::new(license::Lgpl3)),
-        "LGPL-3" => Some(Box::new(license::Lgpl3)),
+        "lgpl" => Some(Box::new(license::LGPL {})),
+        "LGPL" => Some(Box::new(license::LGPL {})),
+        "lgpl-3" => Some(Box::new(license::LGPL {})),
+        "LGPL-3" => Some(Box::new(license::LGPL {})),
         // MPL
-        "mpl" => Some(Box::new(license::Mpl2)),
-        "MPL" => Some(Box::new(license::Mpl2)),
+        "mpl" => Some(Box::new(license::MPL {})),
+        "MPL" => Some(Box::new(license::MPL {})),
         // Unlicense
-        "unlicense" => Some(Box::new(license::Unlicense)),
-        "Unlicense" => Some(Box::new(license::Unlicense)),
-        "UNLICENSE" => Some(Box::new(license::Unlicense)),
-        _ => None
+        "unlicense" => Some(Box::new(license::UNLICENSE {})),
+        "Unlicense" => Some(Box::new(license::UNLICENSE {})),
+        "UNLICENSE" => Some(Box::new(license::UNLICENSE {})),
+        _ => None,
     }
 }
-
 
 #[cfg(test)]
 mod test {
     use super::*;
-    use license::*;
 
     #[test]
     fn not_found_license() {
-        let license = create_license("NONONONO", "azu", 2018);
+        let license = create_license("_NO_LICENSE_");
         assert!(license.is_none());
     }
 
     #[test]
     fn create_mit_license() {
-        // MIT require author
-        let license = create_license("MIT", "azu", 2018);
-        let l = license.unwrap();
-        assert_eq!(l.name(), Mit::new(2018, "azu").name());
-        assert_eq!(l.id(), Mit::new(2018, "azu").id());
+        let mit = create_license("mit");
+        let license_text = mit.unwrap().notice(2018, "azu", "license-generator");
+        assert!(license_text.contains("Permission is hereby granted"));
+        assert!(license_text.contains("azu"));
+        assert!(license_text.contains("2018"));
     }
 
     #[test]
-    fn create_gpl3_license() {
-        // TODO: we want to interate other licenses
-        let license = create_license("gpl", "azu", 2018);
-        let l = license.unwrap();
-        assert_eq!(l.name(), Gpl3.name());
-        assert_eq!(l.id(), Gpl3.id());
+    fn create_gpl_license() {
+        let gpl = create_license("gpl");
+        let license_text = gpl.unwrap().notice(2018, "azu", "license-generator");
+        assert!(license_text.contains("GNU GENERAL PUBLIC LICENSE"));
+        assert!(license_text.contains("azu"));
+        assert!(license_text.contains("2018"));
     }
-
     #[test]
-    fn create_other_license() {
-        let license = create_license("cc0", "azu", 2018);
-        let l = license.unwrap();
-        assert_eq!(l.name(), Cc01.name());
-        assert_eq!(l.id(), Cc01.id());
+    fn create_ccby_license() {
+        let ccby = create_license("ccby");
+        let license_text = ccby.unwrap().notice(2018, "azu", "license-generator");
+        assert!(license_text.contains("Attribution 4.0 International"));
+        assert!(license_text.contains("azu"));
+        assert!(license_text.contains("license-generator"));
     }
 }
