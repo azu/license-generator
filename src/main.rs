@@ -39,7 +39,7 @@ fn main() -> Result<(), Box<std::error::Error>> {
 
     let license_text = license.notice(
         current_year,
-        author,
+        &author,
         &project);
     write_license(&license_text, "LICENSE").unwrap_or_else(|error| {
         eprintln!("Can not write LICENSE file: {}", error);
