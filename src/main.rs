@@ -25,6 +25,8 @@ fn main() -> Result<(), Box<std::error::Error>> {
     let opt = Opt::from_args();
     let dt = Local::now();
     let current_year = dt.year();
+    // TODO: want to remove clone
+    // TODO: if --project is missing, throw error?
     let project = opt.project.clone().unwrap_or("The project".to_string());
     let license = create_license(
         opt.input.as_str()
