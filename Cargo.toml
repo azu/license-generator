@@ -15,6 +15,5 @@ include = [
     "LICENSE"
 ]
 [dependencies]
-license = "0.7.2"
 structopt = "0.2.14"
 chrono = "0.4"
