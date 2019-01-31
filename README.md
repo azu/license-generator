@@ -48,7 +48,7 @@ The CLI use [license - Cargo: packages for Rust](https://crates.io/crates/licens
 
     cargo test
 
-## Release
+## Releases
 
     cargo release --no-dev-version {patch,minor,major}
 
