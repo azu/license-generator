@@ -17,9 +17,8 @@ struct Opt {
     author: String,
     #[structopt(long = "project")]
     project: Option<String>,
-    // TODO: --year support
-    // #[structopt(long = "year")]
-    // year: u32,
+    #[structopt(long = "year")]
+    year: Option<u32>,
 }
 
 fn main() -> Result<(), Box<std::error::Error>> {
@@ -33,6 +32,9 @@ fn main() -> Result<(), Box<std::error::Error>> {
     });
     let dt = Local::now();
     let current_year = dt.year();
+    let year = opt.year.unwrap_or_else(|| {
+        current_year as u32
+    });
     let author = opt.author.as_str();
     // TODO: want to remove clone
     let project = opt.project.clone().unwrap_or_else(|| {
@@ -46,7 +48,7 @@ fn main() -> Result<(), Box<std::error::Error>> {
     });
 
     let license_text = license.notice(
-        current_year,
+        year,
         &author,
         &project);
     write_license(&license_text, "LICENSE").unwrap_or_else(|error| {
