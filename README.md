@@ -29,9 +29,9 @@ Install with [Cargo](https://crates.io/):
     Options:
       --author input author name
       --project input project name that is required by some license
-      --year input specific year 
+      --year input license year 
 
-## Support Licenses
+## Supported Licenses
 
 The CLI supports the following licenses:
 
