@@ -30,7 +30,7 @@ Install with [Cargo](https://crates.io/):
       --author input author name
       --project input project name that is required by some license
       --year input license year
-      --output input filename to write to 
+      --output path to output. Default: ./LICENSE
 
 ## Supported Licenses
 
