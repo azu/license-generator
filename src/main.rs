@@ -19,9 +19,11 @@ struct Opt {
     project: Option<String>,
     #[structopt(long = "year")]
     year: Option<u32>,
+    #[structopt(long = "output")]
+    output: Option<String>,
 }
 
-fn main() -> Result<(), Box<std::error::Error>> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opt = Opt::from_args();
     let license = create_license(
         opt.input.as_str()
@@ -51,8 +53,11 @@ fn main() -> Result<(), Box<std::error::Error>> {
         year,
         &author,
         &project);
-    write_license(&license_text, "LICENSE").unwrap_or_else(|error| {
-        eprintln!("Can not write LICENSE file: {}", error);
+    let output = opt.output.unwrap_or_else(|| {
+       "LICENSE".to_string()
+    });
+    write_license(&license_text, &output).unwrap_or_else(|error| {
+        eprintln!("Can not write license text to \"{}\": {}", output, error);
         process::exit(1);
     });
     Ok(())
