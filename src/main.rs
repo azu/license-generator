@@ -57,7 +57,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
        "LICENSE".to_string()
     });
     write_license(&license_text, &output).unwrap_or_else(|error| {
-        eprintln!("Can not write license text to {} reason: {}", output, error);
+        eprintln!("Can not write license text to \"{}\": {}", output, error);
         process::exit(1);
     });
     Ok(())
