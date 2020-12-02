@@ -23,7 +23,7 @@ struct Opt {
     output: Option<String>,
 }
 
-fn main() -> Result<(), Box<std::error::Error>> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opt = Opt::from_args();
     let license = create_license(
         opt.input.as_str()

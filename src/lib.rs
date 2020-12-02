@@ -10,7 +10,7 @@ pub fn write_license(license_text: &str, output_path: &str) -> Result<(), io::Er
     Ok(())
 }
 
-pub fn create_license(license_type: &str) -> Option<Box<license::License>> {
+pub fn create_license(license_type: &str) -> Option<Box<dyn license::License>> {
     match license_type {
         // BSD
         "bsd" => Some(Box::new(license::BSD {})),
