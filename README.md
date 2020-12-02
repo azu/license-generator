@@ -29,7 +29,8 @@ Install with [Cargo](https://crates.io/):
     Options:
       --author input author name
       --project input project name that is required by some license
-      --year input license year 
+      --year input license year
+      --output input filename to write to 
 
 ## Supported Licenses
 
