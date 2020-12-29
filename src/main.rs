@@ -11,7 +11,7 @@ use std::env;
 
 #[derive(StructOpt, Debug)]
 struct Opt {
-    #[structopt(name = "INPUT")]
+    #[structopt(name = "INPUT", required = true)]
     inputs: Vec<String>,
     #[structopt(long = "author")]
     author: String,
