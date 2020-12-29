@@ -49,6 +49,14 @@ The CLI supports the following licenses:
 - [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)
 - [Unlicense](http://unlicense.org/)
 
+## Tips
+
+### Output to dtdout
+
+```shell
+license-generate --output /dev/stdout
+```
+
 ## Tests
 
     cargo test
