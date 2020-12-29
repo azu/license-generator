@@ -51,7 +51,7 @@ The CLI supports the following licenses:
 
 ## Tips
 
-### Output to dtdout
+### Output to stdout
 
 ```shell
 license-generate --output /dev/stdout
