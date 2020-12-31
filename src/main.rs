@@ -58,7 +58,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 &author,
                 &project
             );
-            let output = if multi_license { format!("{}_{}", output, s.to_uppercase()) }
+            let output = if multi_license { format!("{}-{}", output, s.to_uppercase()) }
                          else { output.clone() };
             write_license(&license_text, &output).unwrap_or_else(|error| {
                 eprintln!("Can not write license text to \"{}\": {}", output, error);
