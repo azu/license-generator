@@ -53,9 +53,11 @@ The CLI supports the following licenses:
 
 ### Output to stdout
 
-```shell
-license-generate --output /dev/stdout
-```
+    license-generator MIT --output /dev/stdout --author "azu"
+
+### multi LICENSE
+
+    license-generator MIT Apache --author "azu"
 
 ## Tests
 

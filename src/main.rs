@@ -11,8 +11,8 @@ use std::env;
 
 #[derive(StructOpt, Debug)]
 struct Opt {
-    #[structopt(name = "INPUT")]
-    input: String,
+    #[structopt(name = "INPUT", required = true)]
+    inputs: Vec<String>,
     #[structopt(long = "author")]
     author: String,
     #[structopt(long = "project")]
@@ -25,13 +25,6 @@ struct Opt {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opt = Opt::from_args();
-    let license = create_license(
-        opt.input.as_str()
-    );
-    let license = license.unwrap_or_else(|| {
-        eprintln!("Not found match license: {}", opt.input);
-        process::exit(1);
-    });
     let dt = Local::now();
     let current_year = dt.year();
     let year = opt.year.unwrap_or_else(|| {
@@ -48,17 +41,29 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             .into_string()
             .expect("use --project: Fail to unwrap os_string")
     });
-
-    let license_text = license.notice(
-        year,
-        &author,
-        &project);
     let output = opt.output.unwrap_or_else(|| {
-       "LICENSE".to_string()
+        "LICENSE".to_string()
     });
-    write_license(&license_text, &output).unwrap_or_else(|error| {
-        eprintln!("Can not write license text to \"{}\": {}", output, error);
-        process::exit(1);
-    });
+    let multi_license = opt.inputs.len() > 1;
+
+    opt.inputs
+        .iter()
+        .for_each(|s| {
+            let license = create_license(s.as_str()).unwrap_or_else(|| {
+                eprintln!("Not found match license: {}", s);
+                process::exit(1);
+            });
+            let license_text = license.notice(
+                year,
+                &author,
+                &project
+            );
+            let output = if multi_license { format!("{}_{}", output, s.to_uppercase()) }
+                         else { output.clone() };
+            write_license(&license_text, &output).unwrap_or_else(|error| {
+                eprintln!("Can not write license text to \"{}\": {}", output, error);
+                process::exit(1);
+            });
+        });
     Ok(())
 }
