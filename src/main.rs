@@ -6,8 +6,8 @@ use structopt::StructOpt;
 
 use license_generator::create_license;
 use license_generator::write_license;
-use std::process::{self, Command};
 use std::env;
+use std::process::{self, Command};
 
 #[derive(StructOpt, Debug)]
 struct Opt {
@@ -55,29 +55,24 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             .into_string()
             .expect("use --project: Fail to unwrap os_string")
     });
-    let output = opt.output.unwrap_or_else(|| {
-        "LICENSE".to_string()
-    });
+    let output = opt.output.unwrap_or_else(|| "LICENSE".to_string());
     let multi_license = opt.inputs.len() > 1;
 
-    opt.inputs
-        .iter()
-        .for_each(|s| {
-            let license = create_license(s.as_str()).unwrap_or_else(|| {
-                eprintln!("Not found match license: {}", s);
-                process::exit(1);
-            });
-            let license_text = license.notice(
-                year,
-                &author,
-                &project
-            );
-            let output = if multi_license { format!("{}-{}", output, s.to_uppercase()) }
-                         else { output.clone() };
-            write_license(&license_text, &output).unwrap_or_else(|error| {
-                eprintln!("Can not write license text to \"{}\": {}", output, error);
-                process::exit(1);
-            });
+    opt.inputs.iter().for_each(|s| {
+        let license = create_license(s.as_str()).unwrap_or_else(|| {
+            eprintln!("Not found match license: {}", s);
+            process::exit(1);
         });
+        let license_text = license.notice(year, &author, &project);
+        let output = if multi_license {
+            format!("{}-{}", output, s.to_uppercase())
+        } else {
+            output.clone()
+        };
+        write_license(&license_text, &output).unwrap_or_else(|error| {
+            eprintln!("Can not write license text to \"{}\": {}", output, error);
+            process::exit(1);
+        });
+    });
     Ok(())
 }

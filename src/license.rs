@@ -7,7 +7,11 @@ pub struct AGPL {}
 
 impl License for AGPL {
     fn notice(&self, year: u32, name: &str, _project: &str) -> String {
-        format!(include_str!("../files/agpl-3.0.txt"), YEAR = year, AUTHOR = name)
+        format!(
+            include_str!("../files/agpl-3.0.txt"),
+            YEAR = year,
+            AUTHOR = name
+        )
     }
 }
 
@@ -16,7 +20,11 @@ pub struct Apache {}
 
 impl License for Apache {
     fn notice(&self, year: u32, name: &str, _project: &str) -> String {
-        format!(include_str!("../files/apache-2.0.txt"), YEAR = year, AUTHOR = name)
+        format!(
+            include_str!("../files/apache-2.0.txt"),
+            YEAR = year,
+            AUTHOR = name
+        )
     }
 }
 
@@ -25,7 +33,11 @@ pub struct BSD {}
 
 impl License for BSD {
     fn notice(&self, year: u32, name: &str, _project: &str) -> String {
-        format!(include_str!("../files/bsd-3.0.txt"), YEAR = year, AUTHOR = name)
+        format!(
+            include_str!("../files/bsd-3.0.txt"),
+            YEAR = year,
+            AUTHOR = name
+        )
     }
 }
 
@@ -34,7 +46,11 @@ pub struct CcBy {}
 
 impl License for CcBy {
     fn notice(&self, _year: u32, name: &str, project: &str) -> String {
-        format!(include_str!("../files/cc-by-4.0.txt"), AUTHOR = name, PROJECT = project)
+        format!(
+            include_str!("../files/cc-by-4.0.txt"),
+            AUTHOR = name,
+            PROJECT = project
+        )
     }
 }
 
@@ -43,7 +59,11 @@ pub struct CcByNc {}
 
 impl License for CcByNc {
     fn notice(&self, _year: u32, name: &str, project: &str) -> String {
-        format!(include_str!("../files/cc-by-nc-4.0.txt"), AUTHOR = name, PROJECT = project)
+        format!(
+            include_str!("../files/cc-by-nc-4.0.txt"),
+            AUTHOR = name,
+            PROJECT = project
+        )
     }
 }
 
@@ -52,7 +72,11 @@ pub struct CcByNcSa {}
 
 impl License for CcByNcSa {
     fn notice(&self, _year: u32, name: &str, project: &str) -> String {
-        format!(include_str!("../files/cc-by-nc-sa-4.0.txt"), AUTHOR = name, PROJECT = project)
+        format!(
+            include_str!("../files/cc-by-nc-sa-4.0.txt"),
+            AUTHOR = name,
+            PROJECT = project
+        )
     }
 }
 
@@ -61,7 +85,11 @@ pub struct CcBySa {}
 
 impl License for CcBySa {
     fn notice(&self, _year: u32, name: &str, project: &str) -> String {
-        format!(include_str!("../files/cc-by-sa-4.0.txt"), AUTHOR = name, PROJECT = project)
+        format!(
+            include_str!("../files/cc-by-sa-4.0.txt"),
+            AUTHOR = name,
+            PROJECT = project
+        )
     }
 }
 
@@ -79,7 +107,11 @@ pub struct GPL {}
 
 impl License for GPL {
     fn notice(&self, year: u32, name: &str, _project: &str) -> String {
-        format!(include_str!("../files/gpl-3.0.txt"), YEAR = year, AUTHOR = name)
+        format!(
+            include_str!("../files/gpl-3.0.txt"),
+            YEAR = year,
+            AUTHOR = name
+        )
     }
 }
 
@@ -88,7 +120,11 @@ pub struct LGPL {}
 
 impl License for LGPL {
     fn notice(&self, year: u32, name: &str, _project: &str) -> String {
-        format!(include_str!("../files/lgpl-3.0.txt"), YEAR = year, AUTHOR = name)
+        format!(
+            include_str!("../files/lgpl-3.0.txt"),
+            YEAR = year,
+            AUTHOR = name
+        )
     }
 }
 
@@ -106,7 +142,11 @@ pub struct MPL {}
 
 impl License for MPL {
     fn notice(&self, year: u32, name: &str, _project: &str) -> String {
-        format!(include_str!("../files/mpl-2.0.txt"), YEAR = year, AUTHOR = name)
+        format!(
+            include_str!("../files/mpl-2.0.txt"),
+            YEAR = year,
+            AUTHOR = name
+        )
     }
 }
 
