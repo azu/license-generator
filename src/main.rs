@@ -6,7 +6,7 @@ use structopt::StructOpt;
 
 use license_generator::create_license;
 use license_generator::write_license;
-use std::process;
+use std::process::{self, Command};
 use std::env;
 
 #[derive(StructOpt, Debug)]
@@ -14,7 +14,7 @@ struct Opt {
     #[structopt(name = "INPUT", required = true)]
     inputs: Vec<String>,
     #[structopt(long = "author")]
-    author: String,
+    author: Option<String>,
     #[structopt(long = "project")]
     project: Option<String>,
     #[structopt(long = "year")]
@@ -25,14 +25,28 @@ struct Opt {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opt = Opt::from_args();
-    let dt = Local::now();
-    let current_year = dt.year();
-    let year = opt.year.unwrap_or_else(|| {
-        current_year as u32
-    });
-    let author = opt.author.as_str();
-    // TODO: want to remove clone
-    let project = opt.project.clone().unwrap_or_else(|| {
+    let year = if let Some(year) = opt.year {
+        year
+    } else {
+        let dt = Local::now();
+        dt.year() as u32
+    };
+    let author = if let Some(author) = opt.author {
+        author
+    } else {
+        let name = Command::new("git")
+            .args(&["config", "--get", "user.name"])
+            .output()?;
+        let email = Command::new("git")
+            .args(&["config", "--get", "user.email"])
+            .output()?;
+        format!(
+            "{} <{}>",
+            String::from_utf8(name.stdout)?.trim(),
+            String::from_utf8(email.stdout)?.trim()
+        )
+    };
+    let project = opt.project.unwrap_or_else(|| {
         env::current_dir()
             .expect("use --project: Not found current dir")
             .file_name()
