@@ -1,4 +1,4 @@
-# license-generator [![Build Status](https://travis-ci.org/azu/license-generator.svg?branch=master)](https://travis-ci.org/azu/license-generator)
+# license-generator [![Test](https://github.com/azu/license-generator/actions/workflows/test.yml/badge.svg)](https://github.com/azu/license-generator/actions/workflows/test.yml)
 
 A Command line tool that generate `LICENSE` file.
 
