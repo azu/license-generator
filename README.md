@@ -27,7 +27,7 @@ Install with [Cargo](https://crates.io/):
     - Unlicense
 
     Options:
-      --author input author name
+      --author input author name. Default: `GitName <GitEmail>`
       --project input project name that is required by some license
       --year input license year
       --output path to output. Default: ./LICENSE
