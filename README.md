@@ -49,7 +49,11 @@ The CLI supports the following licenses:
 - [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)
 - [Unlicense](http://unlicense.org/)
 
-## Tips
+## Examples
+
+### Generate MIT LICENSE
+
+    license-generator MIT --author "azu"
 
 ### Output to stdout
 
