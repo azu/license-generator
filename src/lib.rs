@@ -23,11 +23,11 @@ pub fn create_license(license_type: &str) -> Option<Box<dyn license::License>> {
         "GPL" => Some(Box::new(license::GPL {})),
         "gpl-3" => Some(Box::new(license::GPL {})),
         "GPL-3" => Some(Box::new(license::GPL {})),
-        // APGL
-        "apgl" => Some(Box::new(license::AGPL {})),
-        "APGL" => Some(Box::new(license::AGPL {})),
-        "apgl-3" => Some(Box::new(license::AGPL {})),
-        "APGL-3" => Some(Box::new(license::AGPL {})),
+        // AGPL
+        "agpl" => Some(Box::new(license::AGPL {})),
+        "AGPL" => Some(Box::new(license::AGPL {})),
+        "agpl-3" => Some(Box::new(license::AGPL {})),
+        "AGPL-3" => Some(Box::new(license::AGPL {})),
         // Apache
         "apache" => Some(Box::new(license::Apache {})),
         "Apache" => Some(Box::new(license::Apache {})),
