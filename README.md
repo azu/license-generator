@@ -73,7 +73,7 @@ The CLI supports the following licenses:
 
 Use [cargo-release](https://github.com/sunng87/cargo-release).
 
-    cargo release --no-dev-version {patch,minor,major}
+    cargo release --no-dev-version {patch,minor,major} --execute
 
 ## Contributing
 
