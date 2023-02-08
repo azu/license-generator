@@ -6,9 +6,12 @@ pub trait License {
 pub struct AGPL {}
 
 impl License for AGPL {
-    fn notice(&self, _year: u32, _name: &str, _project: &str) -> String {
+    fn notice(&self, year: u32, name: &str, project: &str) -> String {
         format!(
-            include_str!("../files/agpl-3.0.txt")
+            include_str!("../files/agpl-3.0.txt"),
+            YEAR = year,
+            AUTHOR = name,
+            PROJECT = project
         )
     }
 }
@@ -104,9 +107,12 @@ impl License for CCZero {
 pub struct GPL {}
 
 impl License for GPL {
-    fn notice(&self, _year: u32, _name: &str, _project: &str) -> String {
+    fn notice(&self, year: u32, name: &str, project: &str) -> String {
         format!(
-            include_str!("../files/gpl-3.0.txt")
+            include_str!("../files/gpl-3.0.txt"),
+            YEAR = year,
+            AUTHOR = name,
+            PROJECT = project
         )
     }
 }
@@ -139,7 +145,7 @@ impl License for MPL {
         format!(
             include_str!("../files/mpl-2.0.txt"),
             YEAR = year,
-            AUTHOR = name
+            AUTHOR = name,
         )
     }
 }
