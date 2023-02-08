@@ -79,18 +79,18 @@ mod test {
     #[test]
     fn create_mit_license() {
         let mit = create_license("mit");
-        let license_text = mit.unwrap().notice(2018, "azu", "license-generator");
+        let license_text = mit.unwrap().notice(2018, "TEST_USER", "license-generator");
         assert!(license_text.contains("Permission is hereby granted"));
-        assert!(license_text.contains("azu"));
+        assert!(license_text.contains("TEST_USER"));
         assert!(license_text.contains("2018"));
     }
 
     #[test]
     fn create_gpl_license() {
         let gpl = create_license("gpl");
-        let license_text = gpl.unwrap().notice(2018, "azu", "license-generator");
+        let license_text = gpl.unwrap().notice(2018, "TEST_USER", "license-generator");
         assert!(license_text.contains("GNU GENERAL PUBLIC LICENSE"));
-        assert!(license_text.contains("azu"));
+        assert!(license_text.contains("TEST_USER"));
         assert!(license_text.contains("2018"));
         assert!(license_text.contains("license-generator"));
     }
@@ -98,9 +98,9 @@ mod test {
     #[test]
     fn create_ccby_license() {
         let ccby = create_license("ccby");
-        let license_text = ccby.unwrap().notice(2018, "azu", "license-generator");
+        let license_text = ccby.unwrap().notice(2018, "TEST_USER", "license-generator");
         assert!(license_text.contains("Attribution 4.0 International"));
-        assert!(license_text.contains("azu"));
+        assert!(license_text.contains("TEST_USER"));
         assert!(license_text.contains("license-generator"));
     }
 }
