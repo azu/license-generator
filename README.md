@@ -1,6 +1,6 @@
 # license-generator [![Test](https://github.com/azu/license-generator/actions/workflows/test.yml/badge.svg)](https://github.com/azu/license-generator/actions/workflows/test.yml)
 
-A Command line tool that generate `LICENSE` file.
+A Command line tool that generates `LICENSE` file.
 
 ## Installation
 
@@ -30,11 +30,11 @@ Install with [Cargo](https://crates.io/):
       --author input author name. Default: `GitName <GitEmail>`
       --project input project name that is required by some license
       --year input license year
-      --output path to output. Default: ./LICENSE
+      --output path to the output. Default: ./LICENSE
 
 ## Supported Licenses
 
-The CLI supports the following licenses:
+This CLI supports the following licenses:
 
 - [AGPL-3.0](http://www.gnu.org/licenses/agpl-3.0)
 - [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
