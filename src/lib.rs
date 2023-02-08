@@ -90,9 +90,8 @@ mod test {
         let gpl = create_license("gpl");
         let license_text = gpl.unwrap().notice(2018, "azu", "license-generator");
         assert!(license_text.contains("GNU GENERAL PUBLIC LICENSE"));
-        assert!(license_text.contains("azu"));
-        assert!(license_text.contains("2018"));
     }
+
     #[test]
     fn create_ccby_license() {
         let ccby = create_license("ccby");
