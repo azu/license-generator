@@ -53,17 +53,21 @@ This CLI supports the following licenses:
 
 ### Generate MIT LICENSE
 
-    license-generator MIT --author "azu"
+    license-generator MIT
 
 ### Output to stdout
 
-    license-generator MIT --output /dev/stdout --author "azu"
+    license-generator MIT --output /dev/stdout
 
 ### Multi LICENSE
 
-    license-generator MIT Apache --author "azu"
+    license-generator MIT Apache
     # output
     # LICENSE-MIT and LICENSE-APACHE
+
+### Specify year and author
+
+    license-generator MIT --author azu --year 2024
 
 ## Tests
 
