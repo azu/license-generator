@@ -62,8 +62,7 @@ This CLI supports the following licenses:
 ### Multi LICENSE
 
     license-generator MIT Apache
-    # output
-    # LICENSE-MIT and LICENSE-APACHE
+    # generates `LICENSE-MIT` and `LICENSE-APACHE`
 
 ### Specify year and author
 
