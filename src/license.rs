@@ -117,6 +117,15 @@ impl License for GPL {
     }
 }
 
+// isc.txt
+pub struct ISC {}
+
+impl License for ISC {
+    fn notice(&self, year: u32, name: &str, _project: &str) -> String {
+        format!(include_str!("../files/isc.txt"), YEAR = year, AUTHOR = name)
+    }
+}
+
 // lgpl-3.0.txt
 pub struct LGPL {}
 

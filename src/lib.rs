@@ -18,6 +18,9 @@ pub fn create_license(license_type: &str) -> Option<Box<dyn license::License>> {
         // MIT
         "mit" => Some(Box::new(license::Mit {})),
         "MIT" => Some(Box::new(license::Mit {})),
+        // ISC
+        "isc" => Some(Box::new(license::ISC {})),
+        "ISC" => Some(Box::new(license::ISC {})),
         // GPL
         "gpl" => Some(Box::new(license::GPL {})),
         "GPL" => Some(Box::new(license::GPL {})),
@@ -81,6 +84,15 @@ mod test {
         let mit = create_license("mit");
         let license_text = mit.unwrap().notice(2018, "TEST_USER", "license-generator");
         assert!(license_text.contains("Permission is hereby granted"));
+        assert!(license_text.contains("TEST_USER"));
+        assert!(license_text.contains("2018"));
+    }
+
+    #[test]
+    fn create_isc_license() {
+        let isc = create_license("isc");
+        let license_text = isc.unwrap().notice(2018, "TEST_USER", "license-generator");
+        assert!(license_text.contains("Permission to use, copy, modify, and/or distribute"));
         assert!(license_text.contains("TEST_USER"));
         assert!(license_text.contains("2018"));
     }
