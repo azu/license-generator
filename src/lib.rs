@@ -11,60 +11,42 @@ pub fn write_license(license_text: &str, output_path: &str) -> Result<(), io::Er
 }
 
 pub fn create_license(license_type: &str) -> Option<Box<dyn license::License>> {
-    match license_type {
+    match license_type.to_lowercase().as_str() {
         // BSD
         "bsd" => Some(Box::new(license::BSD {})),
-        "BSD" => Some(Box::new(license::BSD {})),
         // MIT
         "mit" => Some(Box::new(license::Mit {})),
-        "MIT" => Some(Box::new(license::Mit {})),
         // ISC
         "isc" => Some(Box::new(license::ISC {})),
-        "ISC" => Some(Box::new(license::ISC {})),
         // GPL
         "gpl" => Some(Box::new(license::GPL {})),
-        "GPL" => Some(Box::new(license::GPL {})),
         "gpl-3" => Some(Box::new(license::GPL {})),
-        "GPL-3" => Some(Box::new(license::GPL {})),
         // AGPL
         "agpl" => Some(Box::new(license::AGPL {})),
-        "AGPL" => Some(Box::new(license::AGPL {})),
         "agpl-3" => Some(Box::new(license::AGPL {})),
-        "AGPL-3" => Some(Box::new(license::AGPL {})),
         // Apache
         "apache" => Some(Box::new(license::Apache {})),
-        "Apache" => Some(Box::new(license::Apache {})),
         // CC_BY
-        "CC-BY" => Some(Box::new(license::CcBy {})),
-        "CCBY" => Some(Box::new(license::CcBy {})),
+        "cc-by" => Some(Box::new(license::CcBy {})),
         "ccby" => Some(Box::new(license::CcBy {})),
         // CC_BY_NC
-        "CC-BY-NC" => Some(Box::new(license::CcByNc {})),
-        "CCBYNC" => Some(Box::new(license::CcByNc {})),
+        "cc-by-nc" => Some(Box::new(license::CcByNc {})),
         "ccbync" => Some(Box::new(license::CcByNc {})),
         // CC_BY_SA
-        "CC-BY-SA" => Some(Box::new(license::CcBySa {})),
-        "CCBYSA" => Some(Box::new(license::CcBySa {})),
+        "cc-by-sa" => Some(Box::new(license::CcBySa {})),
         "ccbysa" => Some(Box::new(license::CcBySa {})),
         // CC_BY_NC_SA
-        "CC-BY-NC-SA" => Some(Box::new(license::CcByNcSa {})),
-        "CCBYNCSA" => Some(Box::new(license::CcByNcSa {})),
+        "cc-by-nc-sa" => Some(Box::new(license::CcByNcSa {})),
         "ccbyncsa" => Some(Box::new(license::CcByNcSa {})),
         // CC0
         "cc0" => Some(Box::new(license::CCZero {})),
-        "CC0" => Some(Box::new(license::CCZero {})),
         // LGPL
         "lgpl" => Some(Box::new(license::LGPL {})),
-        "LGPL" => Some(Box::new(license::LGPL {})),
         "lgpl-3" => Some(Box::new(license::LGPL {})),
-        "LGPL-3" => Some(Box::new(license::LGPL {})),
         // MPL
         "mpl" => Some(Box::new(license::MPL {})),
-        "MPL" => Some(Box::new(license::MPL {})),
         // Unlicense
         "unlicense" => Some(Box::new(license::UNLICENSE {})),
-        "Unlicense" => Some(Box::new(license::UNLICENSE {})),
-        "UNLICENSE" => Some(Box::new(license::UNLICENSE {})),
         _ => None,
     }
 }
