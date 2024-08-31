@@ -117,6 +117,20 @@ impl License for GPL {
     }
 }
 
+// gpl-2.0.txt
+pub struct GPL2 {}
+
+impl License for GPL2 {
+    fn notice(&self, year: u32, name: &str, project: &str) -> String {
+        format!(
+            include_str!("../files/gpl-2.0.txt"),
+            YEAR = year,
+            AUTHOR = name,
+            PROJECT = project
+        )
+    }
+}
+
 // isc.txt
 pub struct ISC {}
 
@@ -165,5 +179,14 @@ pub struct UNLICENSE {}
 impl License for UNLICENSE {
     fn notice(&self, _year: u32, _name: &str, _project: &str) -> String {
         include_str!("../files/unlicense.txt").to_string()
+    }
+}
+
+// eupl-1.2_en.txt
+pub struct EUPL {}
+
+impl License for EUPL {
+    fn notice(&self, _year: u32, _name: &str, _project: &str) -> String {
+        include_str!("../files/eupl-1.2_en.txt").to_string()
     }
 }
