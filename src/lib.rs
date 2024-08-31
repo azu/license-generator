@@ -47,6 +47,10 @@ pub fn create_license(license_type: &str) -> Option<Box<dyn license::License>> {
         "mpl" => Some(Box::new(license::MPL {})),
         // Unlicense
         "unlicense" => Some(Box::new(license::UNLICENSE {})),
+        // EUPL
+        "eupl" => Some(Box::new(license::EUPL {})),
+        "eupl12" => Some(Box::new(license::EUPL {})),
+        "eupl-1.2" => Some(Box::new(license::EUPL {})),
         _ => None,
     }
 }
