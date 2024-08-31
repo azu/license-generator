@@ -20,7 +20,11 @@ pub fn create_license(license_type: &str) -> Option<Box<dyn license::License>> {
         "isc" => Some(Box::new(license::ISC {})),
         // GPL
         "gpl" => Some(Box::new(license::GPL {})),
+        "gpl3" => Some(Box::new(license::GPL {})),
         "gpl-3" => Some(Box::new(license::GPL {})),
+        // GPLv2
+        "gpl2" => Some(Box::new(license::GPL2 {})),
+        "gpl-2" => Some(Box::new(license::GPL2 {})),
         // AGPL
         "agpl" => Some(Box::new(license::AGPL {})),
         "agpl-3" => Some(Box::new(license::AGPL {})),
