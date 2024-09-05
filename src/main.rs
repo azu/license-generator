@@ -36,9 +36,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         println!();
         return Ok(());
-    } else {
-        
-    }
+    } 
 
     let year = if let Some(year) = opt.year {
         year
