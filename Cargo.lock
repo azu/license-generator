@@ -77,7 +77,7 @@ checksum = "023a4cd09b2ff695f9734c1934145a315594b7986398496841c7031a5a1bbdbd"
 
 [[package]]
 name = "license-generator"
-version = "1.1.1"
+version = "1.2.0"
 dependencies = [
  "chrono",
  "structopt",
