@@ -11,7 +11,9 @@ use std::process::{self, Command};
 
 #[derive(StructOpt, Debug)]
 struct Opt {
-    #[structopt(name = "INPUT", required = true)]
+    #[structopt(short, long, help = "Lists valid license types")]
+    list: bool,
+    #[structopt(name = "INPUT", required_unless("list"))]
     inputs: Vec<String>,
     #[structopt(long = "author")]
     author: Option<String>,
@@ -25,6 +27,19 @@ struct Opt {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opt = Opt::from_args();
+
+    if opt.list {
+        println!("Supported Licenses are:");
+        use license_generator::license::LICENSES;
+        for l in LICENSES {
+            print!("{}, ", l);
+        }
+        println!();
+        return Ok(());
+    } else {
+        
+    }
+
     let year = if let Some(year) = opt.year {
         year
     } else {

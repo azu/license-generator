@@ -2,6 +2,25 @@ pub trait License {
     fn notice(&self, year: u32, name: &str, project: &str) -> String;
 }
 
+pub const LICENSES: [&str; 16] = [
+    "AGPL",
+    "Apache",
+    "BSD",
+    "CC0",
+    "CC-BY",
+    "CC-BY-NC",
+    "CC-BY-NC-SA",
+    "CC-BY-SA",
+    "EUPL-1.2",
+    "GPL-2",
+    "GPL-3",
+    "ISC",
+    "LGPL-3",
+    "MIT",
+    "MPL-2",
+    "Unlicense"
+];
+
 // agpl-3.0.txt
 pub struct AGPL {}
 
