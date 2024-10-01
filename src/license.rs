@@ -2,7 +2,7 @@ pub trait License {
     fn notice(&self, year: u32, name: &str, project: &str) -> String;
 }
 
-pub const LICENSES: [&str; 16] = [
+pub const LICENSES: [&str; 17] = [
     "AGPL",
     "Apache",
     "BSD",
@@ -18,7 +18,8 @@ pub const LICENSES: [&str; 16] = [
     "LGPL-3",
     "MIT",
     "MPL-2",
-    "Unlicense"
+    "Unlicense",
+    "WTFPL"
 ];
 
 // agpl-3.0.txt
@@ -207,5 +208,14 @@ pub struct EUPL {}
 impl License for EUPL {
     fn notice(&self, _year: u32, _name: &str, _project: &str) -> String {
         include_str!("../files/eupl-1.2_en.txt").to_string()
+    }
+}
+
+// WTFPL.txt
+pub struct WTFPL {}
+
+impl License for WTFPL {
+    fn notice(&self, year: u32, name: &str, _project: &str) -> String {
+        format!(include_str!("../files/WTFPL.txt"), YEAR = year, AUTHOR = name)
     }
 }

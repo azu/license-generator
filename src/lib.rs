@@ -55,6 +55,10 @@ pub fn create_license(license_type: &str) -> Option<Box<dyn license::License>> {
         "eupl" => Some(Box::new(license::EUPL {})),
         "eupl12" => Some(Box::new(license::EUPL {})),
         "eupl-1.2" => Some(Box::new(license::EUPL {})),
+
+        // WTFPL
+        "wtfpl" => Some(Box::new(license::WTFPL {})),
+
         _ => None,
     }
 }
@@ -104,5 +108,13 @@ mod test {
         assert!(license_text.contains("Attribution 4.0 International"));
         assert!(license_text.contains("TEST_USER"));
         assert!(license_text.contains("license-generator"));
+    }
+
+    #[test]
+    fn create_wtfpl_license() {
+        let ccby = create_license("wtfpl");
+        let license_text = ccby.unwrap().notice(2018, "TEST_USER", "license-generator");
+        assert!(license_text.contains("  0. You just DO WHAT THE FUCK YOU WANT TO."));
+        assert!(license_text.contains("TEST_USER"));
     }
 }
